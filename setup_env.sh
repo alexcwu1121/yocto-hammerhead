@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Only argument is the desired Yocto working directory
-WORKDIR=$1
+# Use directory of this script as workspace
+WORKDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Build environment image
 podman build . -f Dockerfile.yocto-env-ubuntu-22 -t yocto-env-ubuntu-22
