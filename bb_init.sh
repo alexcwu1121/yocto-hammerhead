@@ -24,8 +24,17 @@ if [ ! -d ${BUILD_DIR} ]; then
 fi
 
 # Populate build directory and template confs
-cp -n ${SOURCES_DIR}/meta-hammerhead/conf/templates/local.conf.sample ${BUILD_DIR}/conf/local.conf
-cp -n ${SOURCES_DIR}/meta-hammerhead/conf/templates/bblayers.conf.sample ${BUILD_DIR}/conf/bblayers.conf
+cp ${SOURCES_DIR}/meta-hammerhead/conf/templates/local.conf.sample ${BUILD_DIR}/conf/local.conf
+cp ${SOURCES_DIR}/meta-hammerhead/conf/templates/bblayers.conf.sample ${BUILD_DIR}/conf/bblayers.conf
 
 # Source OE build environment environment script
-source ${SOURCES_DIR}/poky/oe-init-build-env ${BUILD_DIR}
+source ${SOURCES_DIR}/poky/oe-init-build-env ${BUILD_DIR} >/dev/null
+
+cat <<'EOF'
+### Shell environment set up for builds. ###
+
+You can now run 'bitbake <target>'
+
+Common targets are:
+    core-image-hammerhead
+EOF
