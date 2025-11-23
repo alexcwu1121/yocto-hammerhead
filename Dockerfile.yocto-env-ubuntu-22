@@ -7,6 +7,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN echo "Etc/UTC" > /etc/timezone && \
     ln -sf /usr/share/zoneinfo/Etc/UTC /etc/localtime && \
     apt update && apt install -y \
+    build-essential \
+    libusb-1.0-0-dev \
+    pkg-config \
     locales \
     gawk \
     wget \
@@ -51,6 +54,12 @@ ENV LC_ALL=en_US.UTF-8
 # Install repo tool
 RUN curl https://storage.googleapis.com/git-repo-downloads/repo > /bin/repo && \
     chmod a+rx /bin/repo
+
+# Build and install rpiboot
+# TODO: USB device passthrough into container not working
+#RUN git clone --recurse-submodules --shallow-submodules --depth=1 https://github.com/raspberrypi/usbboot \
+#    && cd usbboot \
+#    && make install
 
 # Don't require a password for sudo
 RUN echo "ALL ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/00-nopasswd \
