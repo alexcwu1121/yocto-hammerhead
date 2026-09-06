@@ -1,6 +1,3 @@
-[submodule "sources/poky"]
-	path = sources/poky
-	url = git://git.yoctoproject.org/poky
 [submodule "sources/meta-openembedded"]
 	path = sources/meta-openembedded
 	url = git@github.com:openembedded/meta-openembedded.git
@@ -10,3 +7,6 @@
 [submodule "sources/meta-hammerhead"]
 	path = sources/meta-hammerhead
 	url = git@github.com:alexcwu1121/meta-hammerhead.git
+[submodule "sources/poky"]
+	path = sources/poky
+	url = https://github.com/yoctoproject/poky.git
