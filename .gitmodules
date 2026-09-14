@@ -10,3 +10,6 @@
 [submodule "sources/poky"]
 	path = sources/poky
 	url = https://github.com/yoctoproject/poky.git
+[submodule "sources/meta-swupdate"]
+	path = sources/meta-swupdate
+	url = git@github.com:sbabic/meta-swupdate.git
