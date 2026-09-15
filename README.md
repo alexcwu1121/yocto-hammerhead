@@ -1,9 +1,21 @@
 # yocto-hammerhead
 
-sudo rpiboot
+Linux build scripts for the Hammerhead Sensor Module, a Raspberry Pi CM5 carrier board.
 
-sudo dd if=/dev/zero of=/dev/sda bs=4M count=10
-sync
+To build:
+1. `git submodule update --init --recursive`
+2. Build and exec into development container: `./setup_env.sh`
+3. Once in development container initialize BitBake environment, `source bb_init.sh`
+4. Build: `bitbake <what bb_init suggests>`
 
-sudo bzcat core-image-hammerhead-hammerhead.rootfs.wic.bz2 | sudo dd of=/dev/sda bs=4M status=progress conv=fsync
-sync
+To first-time flash to eMMC:
+1. Build submoduled usbboot under `sources/usbboot` and build/install either system wide or (preferably) locally. See usbboot documentation.
+2. With board depowered, set Boot DIP switch position 1 to ON
+3. Plug in usb-c power and debugging cable
+4. Run `sudo rpiboot` or `sudo ./sources/usbboot/rpiboot`
+5. Wait for CM5 to appear as a USB storage device
+6. Identify the USB storage device node `eg. /dev/sda`
+7. Run flashing script: `sudo ./flash_cm5.sh <my_image.wic.bz> <storage device name>`
+
+To build a SWupdate image and perform an OTA update:
+1. 
