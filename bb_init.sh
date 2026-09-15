@@ -36,5 +36,6 @@ cat <<'EOF'
 You can now run 'bitbake <target>'
 
 Common targets are:
-    core-image-hammerhead
+    hammerhead-dev-image
+    hammerhead-core-image
 EOF
