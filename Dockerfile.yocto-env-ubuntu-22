@@ -19,7 +19,6 @@ RUN echo "Etc/UTC" > /etc/timezone && \
     texinfo \
     gcc \
     g++ \
-    build-essential \
     chrpath \
     socat \
     cpio \
@@ -32,7 +31,6 @@ RUN echo "Etc/UTC" > /etc/timezone && \
     python3-requests \
     python3-setuptools \
     python3-wheel \
-    locales \
     file \
     liblz4-tool \
     zstd \
@@ -41,6 +39,13 @@ RUN echo "Etc/UTC" > /etc/timezone && \
     curl \
     sudo \
     nano \
+    libncurses-dev \
+    bc \
+    kmod \
+    picocom \
+    libusb-1.0-0-dev \
+    usbutils \
+    udev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen \
@@ -54,12 +59,6 @@ ENV LC_ALL=en_US.UTF-8
 # Install repo tool
 RUN curl https://storage.googleapis.com/git-repo-downloads/repo > /bin/repo && \
     chmod a+rx /bin/repo
-
-# Build and install rpiboot
-# TODO: USB device passthrough into container not working
-#RUN git clone --recurse-submodules --shallow-submodules --depth=1 https://github.com/raspberrypi/usbboot \
-#    && cd usbboot \
-#    && make install
 
 # Don't require a password for sudo
 RUN echo "ALL ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/00-nopasswd \

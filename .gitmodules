@@ -13,3 +13,6 @@
 [submodule "sources/meta-swupdate"]
 	path = sources/meta-swupdate
 	url = git@github.com:sbabic/meta-swupdate.git
+[submodule "sources/usbboot"]
+	path = sources/usbboot
+	url = git@github.com:raspberrypi/usbboot.git
