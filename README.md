@@ -19,3 +19,9 @@ To first-time flash to eMMC:
 
 To build a SWupdate image and perform an OTA update:
 1. 
+
+To use CM5 wifi:
+1. Populate /etc/wpa_supplicant.conf with network ssid and passkey
+2. `ifconfig wlan0 up`
+3. `wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf`
+4. `udhcpc -i wlan0`
