@@ -20,8 +20,16 @@ To first-time flash to eMMC:
 To build a SWupdate image and perform an OTA update:
 1. 
 
-To use CM5 wifi:
+To enable wifi on target:
 1. Populate /etc/wpa_supplicant.conf with network ssid and passkey
 2. `ifconfig wlan0 up`
 3. `wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf`
 4. `udhcpc -i wlan0`
+
+To test a camera:
+1. Install VLC player
+2. Enable wifi on target
+3. Run on target:
+    - Camera 0: `rpicam-vid -t 0 --camera 0 -n --codec libav --libav-format mpegts -o tcp://0.0.0.0:5000?listen=1`
+    - Camera 1: `rpicam-vid -t 0 --camera 1 -n --codec libav --libav-format mpegts -o tcp://0.0.0.0:5000?listen=1`
+4. In VLC, `Media -> Open Network Stream -> tcp://<target ip>:5000`
